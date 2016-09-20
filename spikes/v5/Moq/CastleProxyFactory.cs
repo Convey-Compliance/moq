@@ -64,20 +64,7 @@ namespace Moq
 				return (T)generator.CreateInterfaceProxyWithoutTarget(mockType, interfaces, new ForwardingInterceptor(interceptable));
 			}
 
-			try
-			{
-				return (T)generator.CreateClassProxy(mockType, interfaces, new ProxyGenerationOptions(), arguments, new ForwardingInterceptor(interceptable));
-			}
-			catch (TypeLoadException e)
-			{
-				throw;
-				//throw new ArgumentException(Resources.InvalidMockClass, e);
-			}
-			catch (MissingMethodException e)
-			{
-				throw;
-				//throw new ArgumentException(Resources.ConstructorNotFound, e);
-			}
+         	return (T)generator.CreateClassProxy(mockType, interfaces, new ProxyGenerationOptions(), arguments, new ForwardingInterceptor(interceptable));
 		}
 
 		private static ProxyGenerator CreateProxyGenerator()
